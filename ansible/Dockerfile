@@ -6,7 +6,9 @@ RUN yum update -y && \
     yum clean all
 
 RUN pip install -U pip setuptools && \
-    pip install ansible==2.2.1 requests termcolor
+    pip install ansible==2.3.1 requests termcolor
+
+ADD ansible.cfg /etc/ansible/ansible.cfg
 
 ENV ANSIBLE_LOCAL_TEMP=/tmp
 ENV ANSIBLE_FORCE_COLOR=true
