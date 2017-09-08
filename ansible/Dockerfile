@@ -2,11 +2,13 @@ FROM sbeliakou/centos
 
 RUN yum update -y && \
     yum install -y python-pip python-devel && \
-    yum install -y gcc openssl-devel && \
+    yum install -y gcc openssl-devel rsync make file autoconf automake libtool && \
     yum clean all
 
 RUN pip install -U pip setuptools && \
-    pip install ansible==2.3.1 requests termcolor
+    pip install requests termcolor jmespath jq
+
+RUN pip install ansible==2.3.2 ansible-modules-hashivault
 
 ADD ansible.cfg /etc/ansible/ansible.cfg
 
